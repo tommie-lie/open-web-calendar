@@ -95,6 +95,13 @@ function loadCalendar() {
     if (specification.last_hour !== undefined) {
         scheduler.config.last_hour = specification.last_hour;
     }
+    if (specification.only_workdays) {
+        // 0 refers to Sunday, 6 - to Saturday
+        scheduler.ignore_week = function(date){
+            if (date.getDay() == 6 || date.getDay() == 0) //hides Saturdays and Sundays
+                return true;
+        };
+    }
     var default_view = "month";
     if (specification.default_view !== undefined) {
         default_view = specification.default_view;
