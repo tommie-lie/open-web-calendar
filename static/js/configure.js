@@ -89,6 +89,12 @@ function loadCalendar() {
     // use UTC, see https://docs.dhtmlx.com/scheduler/api__scheduler_server_utc_config.html
     scheduler.config.server_utc = true;
     scheduler.config.readonly = true;
+    if (specification.first_hour !== undefined) {
+        scheduler.config.first_hour = specification.first_hour;
+    }
+    if (specification.last_hour !== undefined) {
+        scheduler.config.last_hour = specification.last_hour;
+    }
     var default_view = "month";
     if (specification.default_view !== undefined) {
         default_view = specification.default_view;
